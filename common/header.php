@@ -24,6 +24,7 @@
 
     echo head_css();
     ?>
+    <link href='http://fonts.googleapis.com/css?family=IM+Fell+Great+Primer+SC' rel='stylesheet' type='text/css'>
     <!-- JavaScripts -->
     <?php queue_js_file('vendor/modernizr'); ?>
     <?php queue_js_file('vendor/selectivizr', 'javascripts', array('conditional' => '(gte IE 6)&(lte IE 8)')); ?>
@@ -35,27 +36,49 @@
     <?php fire_plugin_hook('public_body', array('view'=>$this)); ?>
         <header>
             <?php fire_plugin_hook('public_header', array('view'=>$this)); ?>
-            <div id="site-title"><?php echo link_to_home_page(theme_logo()); ?></div>
-
-            <div id="search-container">
-                <?php if (get_theme_option('use_advanced_search') === null || get_theme_option('use_advanced_search')): ?>
-                <?php echo search_form(array('show_advanced' => true)); ?>
-                <?php else: ?>
-                <?php echo search_form(); ?>
-                <?php endif; ?>
+            <div id="site-title">
+              <?php echo link_to_home_page(theme_logo()); ?>
+              <h4>Verses in Vogue with the Vulgar</h4>
             </div>
-        </header>
 
-         <div id="primary-nav">
-             <?php
-                  echo public_nav_main();
-             ?>
-         </div>
+
+            <div id="aas-logo">
+              <img src="<?php echo img('AAS-title-and-seal04.png'); ?>" alt="AAS Logo"> 
+            </div>
+
+            
+        </header>
+          <div id="nav">
+            <div id="primary-nav">
+               <?php 
+                $navArray = array();
+                $navArray[] = array('label' => 'Ballads', 'uri' => url('items'));
+                $navArray[] = array('label' => 'Essays', 'uri' => url('essays'));
+                $navArray[] = array('label' => 'Subjects', 'uri' => url('subjects'));
+                $navArray[] = array('label' => 'About', 'uri' => url('about'));
+                ?>
+               <?php
+                    echo nav($navArray);
+               ?>
+             
+              <div id="search-container">
+                <?php echo search_form(array('show_advanced' => true)); ?>
+              </div>
+            </div>
+            
+          </div><!-- end-nav -->
+         
   
          <div id="mobile-nav">
              <?php
-                  echo public_nav_main();
+                  echo nav($navArray);
              ?>
+             <div id="search-container">
+              <?php 
+                echo search_form(array('show_advanced' => false));
+              ?>
+             </div>
+             
          </div>
         
         <?php echo theme_header_image(); ?>
