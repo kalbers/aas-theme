@@ -848,9 +848,6 @@ header h4 {
   overflow: visible;
   width:25%;
 }
-#primary-nav .navigation > li:first-child a {
-  border-left: 1px solid #ccc;
-}
 #primary-nav a {
   behavior: url("../javascripts/boxsizing.htc");
   -moz-box-sizing: border-box;
@@ -859,11 +856,9 @@ header h4 {
   text-decoration: none;
   display: block;
   padding: 0.75em 18px;
-  background: #fafafa;
-  border: 1px solid #ccc;
+  color:#fff;
 }
 #primary-nav a:hover, #primary-nav li.active a {
-  background: #fff;
   color: #ff8000;
 }
 #primary-nav li ul, #primary-nav li ul ul {
